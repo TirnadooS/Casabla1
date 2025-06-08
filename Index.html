@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Casablanca Bestilling</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: url('bakgrunn.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      color: #2c3e50;
+      overflow-x: hidden;
+    }.container {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 600px;
+  margin: 50px auto;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+h1 {
+  color: #e67e22;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+select, textarea, input[type="text"] {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+}
+
+button {
+  background-color: #e67e22;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #cf6511;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bestill mat</h1>
+    <form id="orderForm" onsubmit="return sendToWhatsApp();">
+      <label for="bord">Velg bord:</label>
+      <select id="bord" required>
+        <option value="">-- Velg --</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="Takeaway">Takeaway</option>
+      </select><label for="navn">Navn:</label>
+  <input type="text" id="navn" placeholder="Ditt navn" required>
+
+  <label for="bestilling">Hva ønsker du å bestille?</label>
+  <textarea id="bestilling" rows="4" placeholder="Skriv din bestilling her..." required></textarea>
+
+  <button type="submit">Send bestilling via WhatsApp</button>
+</form>
+
+  </div>  <script>
+    function sendToWhatsApp() {
+      const bord = document.getElementById("bord").value;
+      const navn = document.getElementById("navn").value;
+      const bestilling = document.getElementById("bestilling").value;
+
+      const melding = `Bestilling fra bord: ${bord}%0ANavn: ${navn}%0ABestilling:%0A${bestilling}`;
+
+      const telefonnummer = "+4799999999"; // ← замените на номер WhatsApp
+      const link = `https://wa.me/${telefonnummer.replace('+','')}?text=${melding}`;
+
+      window.open(link, '_blank');
+      return false; // Не перезагружать страницу
+    }
+  </script></body>
+</html>
