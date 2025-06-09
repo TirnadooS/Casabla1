@@ -26,32 +26,17 @@
       text-align: center;
     }
 
-    .order-container {
-      background-color: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 600px;
-      margin: 50px auto;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      text-align: center;
-    }
-
     h1 {
       color: #e67e22;
       font-size: 2.5em;
       margin-bottom: 10px;
     }
 
-    .order-container h1 {
-      font-size: 2em;
-      margin-bottom: 20px;
-    }
-
     .menu-links {
       margin: 30px 0;
     }
 
-    .menu-links a, .nav-btn {
+    .menu-links a {
       display: inline-block;
       margin: 10px;
       padding: 12px 24px;
@@ -67,7 +52,7 @@
       font-size: 16px;
     }
 
-    .nav-btn:hover, .menu-links a:hover {
+    .menu-links a:hover {
       background-color: #cf6511;
     }
 
@@ -105,245 +90,39 @@
       0% { transform: translateY(0) scale(0.5); opacity: 1; }
       100% { transform: translateY(-150px) scale(1); opacity: 0; }
     }
-
-    /* Popup for bordvalg */
-    #tableModal {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-
-    #tableModal div {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      text-align: center;
-      max-width: 300px;
-    }
-
-    #tableSelect {
-      padding: 10px;
-      margin-top: 10px;
-      width: 100%;
-    }
-
-    #confirmBtn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #e67e22;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    /* Order form styles */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    select, textarea, input[type="text"] {
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: #e67e22;
-      color: white;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #cf6511;
-    }
-
-    /* Section visibility */
-    .section {
-      display: none;
-    }
-
-    .section.active {
-      display: block;
-    }
-
-    /* Navigation */
-    .navigation {
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-      text-align: left;
-    }
   </style>
 </head>
 <body>
 
-  <!-- MODAL -->
-  <div id="tableModal">
-    <div>
-      <h3>Velg bord eller takeaway</h3>
-      <select id="tableSelect">
-        <option disabled selected>Velg...</option>
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="Takeaway">🍱 Takeaway</option>
-      </select>
-      <button id="confirmBtn" onclick="confirmTable()">Bekreft</button>
+  <div class="container">
+    <h1>Casablanca Hamna Restaurant</h1>
+    <p>Velkommen! Se vår meny 👇</p>
+
+    <div class="menu-links">
+      <a href="pizza_meny.jpg" target="_blank" onclick="launchStickers(event, ['pizza1.png', 'pizza2.png'])">🍕 Pizza Meny</a>
+      <a href="sushi_meny.jpg" target="_blank" onclick="launchStickers(event, ['sushi1.png', 'sushi2.png'])">🍣 Sushi Meny</a>
+      <a href="kebab_drikke_meny.jpg" target="_blank" onclick="launchStickers(event, ['kebab1.png', 'kebab2.png'])">🥙 Kebab & Drikke</a>
     </div>
-  </div>
 
-  <!-- NAVIGATION -->
-  <div class="navigation" style="text-align: center; padding: 20px;">
-    <button class="nav-btn" onclick="showSection('home')">🏠 Hjem</button>
-    <button class="nav-btn" onclick="showSection('order')">📝 Bestill mat</button>
-  </div>
-
-  <!-- HOME SECTION -->
-  <div id="home" class="section active">
-    <div class="container">
-      <div id="selectedTableInfo"></div>
-
-      <h1>Casablanca Hamna Restaurant</h1>
-      <p>Velkommen! Se vår meny 👇</p>
-
-      <div class="menu-links">
-        <a href="pizza_meny.jpg" target="_blank" onclick="launchStickers(event, ['pizza1.png', 'pizza2.png'])">🍕 Pizza Meny</a>
-        <a href="sushi_meny.jpg" target="_blank" onclick="launchStickers(event, ['sushi1.png', 'sushi2.png'])">🍣 Sushi Meny</a>
-        <a href="kebab_drikke_meny.jpg" target="_blank" onclick="launchStickers(event, ['kebab1.png', 'kebab2.png'])">🥙 Kebab & Drikke</a>
-      </div>
-
-      <div class="gallery">
-        <img src="image1.jpg" alt="" />
-        <img src="image2.jpg" alt="" />
-        <img src="image3.jpg" alt="" />
-      </div>
-
-      <div class="menu-links">
-        <button class="nav-btn" onclick="showSection('order')">📝 Bestill mat nå!</button>
-      </div>
-
-      <div class="menu-links">
-        <a href="https://www.instagram.com/casablanca_hamna_restaurant" target="_blank">📸 Instagram</a>
-        <a href="https://www.facebook.com/share/1BqMRvWL6P/" target="_blank">👍 Facebook</a>
-        <a href="https://maps.google.com/?q=Ekornvegen+40,+9017+Tromsø" target="_blank">📍 Finn oss på kartet</a>
-      </div>
-
-      <div class="footer">
-        <p>📍 Adresse: Ekornvegen 40, 9017 Tromsø</p>
-        <p>© Casablanca Hamna Restaurant – Tromsø</p>
-      </div>
+    <div class="gallery">
+      <img src="image1.jpg" alt="" />
+      <img src="image2.jpg" alt="" />
+      <img src="image3.jpg" alt="" />
     </div>
-  </div>
 
-  <!-- ORDER SECTION -->
-  <div id="order" class="section">
-    <div class="order-container">
-      <h1>Bestill mat</h1>
-      <form id="orderForm" onsubmit="return sendToWhatsApp();">
-        <label for="bord">Velg bord:</label>
-        <select id="bord" required>
-          <option value="">-- Velg --</option>
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="C">C</option>
-          <option value="D">D</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="Takeaway">Takeaway</option>
-        </select>
+    <div class="menu-links">
+      <a href="https://www.instagram.com/casablanca_hamna_restaurant" target="_blank">📸 Instagram</a>
+      <a href="https://www.facebook.com/share/1BqMRvWL6P/" target="_blank">👍 Facebook</a>
+      <a href="https://maps.google.com/?q=Ekornvegen+40,+9017+Tromsø" target="_blank">📍 Finn oss på kartet</a>
+    </div>
 
-        <label for="navn">Navn:</label>
-        <input type="text" id="navn" placeholder="Ditt navn" required>
-
-        <label for="bestilling">Hva ønsker du å bestille?</label>
-        <textarea id="bestilling" rows="4" placeholder="Skriv din bestilling her..." required></textarea>
-
-        <button type="submit">Send bestilling via WhatsApp</button>
-      </form>
-
-      <div style="margin-top: 20px;">
-        <button class="nav-btn" onclick="showSection('home')">🏠 Tilbake til hjem</button>
-      </div>
+    <div class="footer">
+      <p>📍 Adresse: Ekornvegen 40, 9017 Tromsø</p>
+      <p>© Casablanca Hamna Restaurant – Tromsø</p>
     </div>
   </div>
 
   <script>
-    let selectedTable = "";
-
-    function showSection(sectionName) {
-      // Hide all sections
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(section => {
-        section.classList.remove('active');
-      });
-
-      // Show selected section
-      document.getElementById(sectionName).classList.add('active');
-
-      // If switching to order section and table is already selected, pre-fill it
-      if (sectionName === 'order' && selectedTable) {
-        document.getElementById('bord').value = selectedTable;
-      }
-    }
-
-    function confirmTable() {
-      const select = document.getElementById("tableSelect");
-      selectedTable = select.value;
-      if (!selectedTable) {
-        alert("Vennligst velg bord eller takeaway");
-        return;
-      }
-
-      document.getElementById("tableModal").style.display = "none";
-
-      const info = document.getElementById("selectedTableInfo");
-      info.innerHTML = `🪑 Du valgte: <strong>${selectedTable}</strong>`;
-
-      // Pre-fill order form if it exists
-      const bordSelect = document.getElementById("bord");
-      if (bordSelect) {
-        bordSelect.value = selectedTable;
-      }
-    }
-
     function launchStickers(event, images) {
       const btn = event.currentTarget;
       const rect = btn.getBoundingClientRect();
@@ -362,20 +141,6 @@
           img.remove();
         }, 1500);
       });
-    }
-
-    function sendToWhatsApp() {
-      const bord = document.getElementById("bord").value;
-      const navn = document.getElementById("navn").value;
-      const bestilling = document.getElementById("bestilling").value;
-
-      const melding = `Bestilling fra bord: ${bord}%0ANavn: ${navn}%0ABestilling:%0A${bestilling}`;
-
-      const telefonnummer = "+4746258614"; // ← замените на номер WhatsApp
-      const link = `https://wa.me/${telefonnummer.replace('+','')}?text=${melding}`;
-
-      window.open(link, '_blank');
-      return false; // Не перезагружать страницу
     }
   </script>
 </body>
