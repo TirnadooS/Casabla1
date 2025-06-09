@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casablanca Hamna Restaurant</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -13,7 +13,6 @@
       margin: 0;
       padding: 20px;
       color: #2c3e50;
-      overflow-x: hidden;
     }
 
     .container {
@@ -21,20 +20,27 @@
       border-radius: 20px;
       padding: 30px;
       max-width: 1000px;
-      margin: auto;
+      margin: 0 auto;
       box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      text-align: center;
     }
 
-    .logo {
-      max-width: 300px; /* Регулируйте по размеру вашего логотипа */
-      height: auto;
+    /* Стили для логотипа */
+    .logo-container {
+      text-align: center;
       margin: 0 auto 20px;
+    }
+    
+    .logo {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
       display: block;
+      margin: 0 auto;
     }
 
     .menu-links {
       margin: 30px 0;
+      text-align: center;
     }
 
     .menu-links a {
@@ -46,10 +52,6 @@
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
-      position: relative;
-      z-index: 1;
-      cursor: pointer;
-      border: none;
       font-size: 16px;
     }
 
@@ -77,39 +79,35 @@
       margin-top: 40px;
       font-size: 14px;
       color: #666;
+      text-align: center;
     }
 
-    .sticker {
-      position: absolute;
-      width: 50px;
-      animation: fly 1.2s ease-out forwards;
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    @keyframes fly {
-      0% { transform: translateY(0) scale(0.5); opacity: 1; }
-      100% { transform: translateY(-150px) scale(1); opacity: 0; }
+    @media (max-width: 600px) {
+      .logo {
+        max-width: 200px;
+      }
     }
   </style>
 </head>
 <body>
-
   <div class="container">
-    <!-- Замените logo.png на путь к вашему логотипу -->
-    <img src="logo.png" alt="Casablanca Hamna Restaurant" class="logo">
-    <p>Velkommen! Se vår meny 👇</p>
+    <!-- Логотип -->
+    <div class="logo-container">
+      <img src="logo.png" alt="Casablanca Hamna Restaurant" class="logo">
+    </div>
+
+    <p style="text-align: center">Velkommen! Se vår meny 👇</p>
 
     <div class="menu-links">
-      <a href="pizza_meny.jpg" target="_blank" onclick="launchStickers(event, ['pizza1.png', 'pizza2.png'])">🍕 Pizza Meny</a>
-      <a href="sushi_meny.jpg" target="_blank" onclick="launchStickers(event, ['sushi1.png', 'sushi2.png'])">🍣 Sushi Meny</a>
-      <a href="kebab_drikke_meny.jpg" target="_blank" onclick="launchStickers(event, ['kebab1.png', 'kebab2.png'])">🥙 Kebab & Drikke</a>
+      <a href="pizza_meny.jpg" target="_blank">🍕 Pizza Meny</a>
+      <a href="sushi_meny.jpg" target="_blank">🍣 Sushi Meny</a>
+      <a href="kebab_drikke_meny.jpg" target="_blank">🥙 Kebab & Drikke</a>
     </div>
 
     <div class="gallery">
-      <img src="image1.jpg" alt="" />
-      <img src="image2.jpg" alt="" />
-      <img src="image3.jpg" alt="" />
+      <img src="image1.jpg" alt="Interiør">
+      <img src="image2.jpg" alt="Matretter">
+      <img src="image3.jpg" alt="Utendørs">
     </div>
 
     <div class="menu-links">
@@ -123,27 +121,5 @@
       <p>© Casablanca Hamna Restaurant – Tromsø</p>
     </div>
   </div>
-
-  <script>
-    function launchStickers(event, images) {
-      const btn = event.currentTarget;
-      const rect = btn.getBoundingClientRect();
-      const x = rect.left + rect.width / 2;
-      const y = rect.top;
-
-      images.forEach(src => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.className = 'sticker';
-        img.style.left = x + 'px';
-        img.style.top = y + 'px';
-        document.body.appendChild(img);
-
-        setTimeout(() => {
-          img.remove();
-        }, 1500);
-      });
-    }
-  </script>
 </body>
 </html>
